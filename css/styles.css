@@ -1,0 +1,295 @@
+/* ==========================================================================
+   1. CONFIGURACIÓN GLOBAL & VARIABLES
+   ========================================================================== */
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-color: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent-color: #6366f1; /* Morado/Azul IA */
+    --accent-success: #10b981;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 2rem;
+}
+
+/* Títulos generales de secciones */
+h3 { 
+    font-size: 2rem; 
+    margin-bottom: 2rem; 
+    border-left: 4px solid var(--accent-color); 
+    padding-left: 1rem; 
+}
+
+/* ==========================================================================
+   2. HERO SECTION
+   ========================================================================== */
+.hero {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 1rem;
+}
+
+.hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+.hero h2 { font-size: 1.8rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+.hero p { max-width: 600px; margin: 0 auto 2rem; color: var(--text-muted); }
+.highlight { color: var(--accent-color); }
+
+.btn {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+.btn:hover { transform: translateY(-3px); }
+
+/* Enlaces internos de proyectos */
+.project-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+.project-link:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   3. BENTO GRID / PROYECTOS
+   ========================================================================== */
+.projects-section, .stack-section {
+    max-width: 1000px;
+    margin: 4rem auto;
+}
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .bento-card.large {
+        grid-column: span 2;
+    }
+}
+
+.bento-card {
+    background-color: var(--card-bg);
+    border: 1px solid #334155;
+    padding: 2rem;
+    border-radius: 16px;
+    position: relative;
+    transition: border-color 0.3s;
+}
+.bento-card:hover { border-color: var(--accent-color); }
+
+.badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+.badge.active { background-color: rgba(16, 185, 129, 0.2); color: var(--accent-success); }
+.badge.upcoming { background-color: rgba(148, 163, 184, 0.2); color: var(--text-muted); }
+
+/* ==========================================================================
+   4. FORMACIÓN & CERTIFICACIONES 
+   ========================================================================== */
+.stack-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 1.5rem;
+}
+
+@media (max-width: 500px) {
+    .stack-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.stack-card {
+    background-color: var(--card-bg);
+    border: 1px solid #334155;
+    padding: 2rem;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.stack-card:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.card-header h4 {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    max-width: 70%; /* Evita que el texto pise el logo */
+}
+
+.date-badge, .ibm-badge {
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.date-badge {
+    background-color: #334155;
+    color: var(--text-color);
+}
+
+.ibm-badge {
+    background-color: rgba(99, 102, 241, 0.15);
+    color: #818cf8;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.stack-card .title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+    color: var(--text-color);
+}
+
+.stack-card .desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.skills-tags span {
+    background-color: #1e293b;
+    color: #cbd5e1;
+    border: 1px solid #475569;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.verify-btn {
+    align-self: flex-start;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid var(--accent-color);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.verify-btn:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* ==========================================================================
+   5. LOGOS DE LOS PROVEEDORES
+   ========================================================================== */
+.header-badge-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.provider-logo {
+    height: 28px; /* Un poco más grande para mejor visualización */
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* El logo de IBM es oscuro por defecto, le damos brillo para fondo oscuro */
+.ibm-badge + .provider-logo {
+    filter: brightness(1.8) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3)); 
+}
+
+/* Ajuste específico para el logo redondo de Edutin */
+.spec-edutin {
+    border-radius: 50%;
+}
+
+/* Contenedor para alinear los botones horizontalmente */
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap; /* Permite que se adapte bien en pantallas de móviles */
+}
+
+/* Botón estilizado para redes sociales */
+.btn-social {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #1e293b; /* Fondo a juego con las tarjetas */
+    border: 1px solid #334155;
+    color: var(--text-color);
+    padding: 0.75rem 1.25rem;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.2s, border-color 0.2s, background-color 0.2s;
+}
+
+.btn-social:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-color);
+    background-color: #24334d;
+}
+
+/* Tamaño controlado para los logotipos sociales */
+.social-icon {
+    height: 20px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* El logo oficial de GitHub es negro completo por defecto. 
+   Le aplicamos un filtro blanco para que resalte sobre el fondo oscuro */
+.icon-github {
+    filter: invert(1);
+}
