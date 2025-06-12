@@ -293,3 +293,223 @@ h3 {
 .icon-github {
     filter: invert(1);
 }
+
+/* ==========================================================================
+   6. SECCIÓN SOBRE MÍ / QUIÉN SOY
+   ========================================================================== */
+.about-section {
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    background-color: var(--card-bg);
+    border: 1px solid #334155;
+    padding: 3rem;
+    border-radius: 16px;
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column-reverse; /* En móvil la foto se muestra arriba */
+        text-align: center;
+        padding: 2rem;
+        gap: 2rem;
+    }
+}
+
+.about-content {
+    flex: 1;
+}
+
+.about-text {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+}
+
+.about-text strong {
+    color: var(--text-color);
+}
+
+/* Etiquetas de habilidades profesionales */
+.soft-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .soft-skills {
+        justify-content: center;
+    }
+}
+
+.soft-tag {
+    background-color: rgba(99, 102, 241, 0.1);
+    color: #818cf8;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px; /* Bordes totalmente redondeados tipo píldora */
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Contenedor y diseño de la foto de perfil */
+.about-avatar-wrapper {
+    flex-shrink: 0;
+}
+
+.about-avatar {
+    width: 300px;  /* Cambia de 200px a 250px (o el tamaño que quieras) */
+    height: 300px; /* Mantén siempre el mismo valor que el ancho para que siga siendo un círculo perfecto */
+    border-radius: 50%; 
+    object-fit: cover;
+    border: 3px solid var(--accent-color); 
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.2); 
+    transition: transform 0.3s ease;
+}
+
+.about-avatar:hover {
+    transform: scale(1.05); /* Efecto zoom ligero al pasar el ratón */
+}
+
+/* Añade esto bajo la regla del 'body' para que el salto entre secciones sea suave */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Evita que el menú fijo tape el título de la sección */
+}
+
+/* ==========================================================================
+   X. NAVBAR & DESPLEGABLES (DROPDOWNS)
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(15, 23, 42, 0.8); /* Fondo oscuro translúcido */
+    backdrop-filter: blur(12px); /* Efecto cristal esmerilado moderno */
+    border-bottom: 1px solid #1e293b;
+    z-index: 1000; /* Asegura que el menú siempre quede por encima de todo */
+}
+
+.nav-container {
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    height: 100%;
+}
+
+.nav-item {
+    position: relative; /* Base imprescindible para posicionar el desplegable */
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    transition: color 0.2s, background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.nav-link:hover {
+    color: var(--text-color);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Icono de flecha pequeña hecho con CSS puro */
+.arrow-down {
+    border: solid var(--text-muted);
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 2px;
+    transform: rotate(45deg);
+    transition: transform 0.2s;
+}
+
+.nav-item:hover .arrow-down {
+    border-color: var(--accent-color);
+    transform: rotate(-135deg); /* La flecha gira hacia arriba al desplegar */
+}
+
+/* --- ESTILOS DEL DESPLEGABLE (DROPDOWN) --- */
+.dropdown-menu {
+    position: absolute;
+    top: 70px; /* Justo debajo del navbar */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px); /* Centrado y ligeramente desplazado */
+    background-color: var(--card-bg);
+    border: 1px solid #334155;
+    border-radius: 12px;
+    min-width: 200px;
+    padding: 0.5rem 0;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    list-style: none;
+    
+    /* Efecto ocultar por defecto */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+/* Mostrar el menú al pasar el ratón por encima del botón padre */
+.nav-item:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0); /* Sube suavemente a su posición original */
+}
+
+.dropdown-menu li a {
+    color: var(--text-muted);
+    text-decoration: none;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-menu li a:hover {
+    background-color: rgba(99, 102, 241, 0.1); /* Fondo morado IA sutil */
+    color: var(--accent-color);
+}
+
+/* Añadimos un margen superior al Hero para que el Navbar fijo no tape tu nombre al cargar la web */
+.hero {
+    margin-top: 70px;
+}
